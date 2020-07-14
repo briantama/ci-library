@@ -77,7 +77,7 @@
 
                       if(trim($value->Status) == "1"){
                         $list = "<span class='badge badge-danger'>Active</span>";
-                        $btn  = "<a href='#' class='btn btn-info' onclick='return setPostData(\"$value->ReturnBookID\", \"Returnbook/viewReturnbook\", \"post\", \"a-returnbook\", \"li-transaction\");' title='Post'><i class='fas fa-fw fa-share'></i> </a>";
+                        $btn  = "<a href='#' class='btn btn-info' onclick='return setPostData(\"$value->ReturnBookID\", \"returnbook/viewReturnbook\", \"post\", \"a-returnbook\", \"li-transaction\");' title='Post'><i class='fas fa-fw fa-share'></i> </a>";
                         //$btn  = '<a href="#" class="btn btn-info" onclick="return setPostData($value->BorrowingID, borrowing/viewBorrowing, post, a-borrowing, li-transaction);" title="Post"><i class="fas fa-fw fa-share"></i> </a>';
                         //$btn  = "<a href=\"#\" class=\"btn btn-info\" onclick=\"return setPostData(\"$value->BorrowingID\", \"borrowing/viewBorrowing\", \"post\", \"a-borrowing\", \"li-transaction\");\" title=\"Post\"><i class=\"fas fa-fw fa-share\"></i> </a>";
                       }
@@ -96,7 +96,7 @@
                     <tr>
                       <td nowrap>
                           <a href="#" class="btn btn-warning" onclick="return getReturnBook('<?php echo $value->ReturnBookID?>');" title="Edit"><i class="fas fa-fw fa-edit"></i> </a>
-                          <a href="#" class="btn btn-danger" onclick="return DeleteData('<?php echo $value->ReturnBookID?>', 'Returnbook/viewReturnbook', 'delete', 'a-returnbook', 'li-transaction');" title="Delete"><i class="fas fa-fw fa-trash"></i> </a>
+                          <a href="#" class="btn btn-danger" onclick="return DeleteData('<?php echo $value->ReturnBookID?>', 'returnbook/viewReturnbook', 'delete', 'a-returnbook', 'li-transaction');" title="Delete"><i class="fas fa-fw fa-trash"></i> </a>
                           <?php echo $btn; ?>
                       </td>
                       <td><?php echo $value->ReturnBookID ?></td>
@@ -293,7 +293,7 @@ $query = $this->db->query("SELECT  CONCAT('RTB-".$stx."-',LPAD(COALESCE(MAX(RIGH
 
     var base_url = window.location.origin;
     $( "#borrowing" ).autocomplete({
-      serviceUrl: base_url+"/ci-library/Returnbook/viewReturnbook/search",   // Kode php untuk prosesing data.
+      serviceUrl: base_url+"/ci-library/returnbook/viewReturnbook/search",   // Kode php untuk prosesing data.
       dataType: "JSON",           // Tipe data JSON.
       onSelect: function (suggestion) {
       $( "#borrowing" ).val("" + suggestion.key);

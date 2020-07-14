@@ -22,6 +22,13 @@ function unBlock() {
   $.unblockUI();
 }
 
+//cetak card borrowers
+function printCardBorrower(url, param){
+    var base_url  = window.location.origin;
+    return window.open(base_url+url,'_blank', 'width=600');
+}
+
+
 function callpage(id, clsp, nvitem=''){ 
     //alert(id);
     if(id != ""){
@@ -367,9 +374,9 @@ function BookSave() {
         $('#notif-book').delay(2000).hide(2000);
         $("#shelf").focus();
     }
-    else if(stock == ""){
+    else if(stock == "" || stock < 0){
         $("#notif-book").show("slow");
-        $('#notif-book').fadeIn(2000).html('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <i class="fas fa-info-circle"></i> Please Insert StockBook</div>');   
+        $('#notif-book').fadeIn(2000).html('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <i class="fas fa-info-circle"></i> Please Insert StockBook Or StockBook Cannot Be Zero</div>');   
         $('#notif-book').delay(2000).hide(2000);
         $("#stock").focus();
     }
@@ -737,7 +744,7 @@ function getReturnBook(id) {
     $("#addreturnbook").modal('show');
         $.ajax({
             type: "GET",
-            url : "ReturnBook/viewReturnbook/view/"+id,
+            url : "returnbook/viewReturnbook/view/"+id,
             success: function(data) {
                 $("#id").val(data.ReturnBookID);
                 if(id != 0){

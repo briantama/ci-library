@@ -190,6 +190,14 @@ class Borrowers extends CI_Controller {
       $data['bordata']      = $this->Borrowers_model->ViewGetBorrowes()->result();
       $this->load->view('borrowers/Borrowers_print',$data);
     }
+    else if(trim($uri) == "print-borrowers"){
+      $this->load->model('Borrowers_model');
+      $where                = array('BorrowerID' =>  $uri1);
+      $data['title']        = 'Print Card Borrowers';
+      $data['isi']          = 'borrowers/Borrowers_printcard';
+      $data['bordata']      = $this->Borrowers_model->ViewGetBorrowesUser($where, "M_Borrowers")->result();
+      $this->load->view('borrowers/Borrowers_printcard',$data);
+    }
     else{
       $this->load->model('Borrowers_model');
       $data['title']        = 'Data Borrowers';

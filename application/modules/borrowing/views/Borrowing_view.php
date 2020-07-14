@@ -150,8 +150,8 @@ $query = $this->db->query("SELECT  CONCAT('BRG-".$stx."-',LPAD(COALESCE(MAX(RIGH
                   <td style="width: 15%">Book Name *</td><td style="width: 35%"><input class="form-control" id="bookname" name="bookname" type="text" required readonly="readonly"/></td>
                 </tr>
                 <tr>
-                  <td style="width: 15%">StartDate *</td><td style="width: 35%"><input class="form-control" id="startdate" name="startdate" type="text" required /></td>
-                  <td style="width: 15%">EndDate *</td><td style="width: 35%"><input class="form-control" id="enddate" name="enddate" type="text" required /></td>
+                  <td style="width: 15%">StartDate *</td><td style="width: 35%"><input class="form-control" id="startdate" name="startdate" type="text" required  autocomplete="off" /></td>
+                  <td style="width: 15%">EndDate *</td><td style="width: 35%"><input class="form-control" id="enddate" name="enddate" type="text" required autocomplete="off" /></td>
                 </tr>
                 <tr>
                   <td style="width: 15%">Total Book *</td><td style="width: 15%"><input class="form-control" id="total" onClick="getStockBook()" name="total" type="number" required/><br><div id="totalinfo"></div></td>

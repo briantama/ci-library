@@ -82,10 +82,11 @@ class Returnbook extends CI_Controller {
                                            D.ReturnBookID, D.DamageOrLostBook, D.DamageCost, D.TotalCost, D.ReturnDate, D.LateCharge
                                     FROM   T_Borrowing A 
                                     INNER  JOIN M_Book B ON A.BookID=B.BookID
-                                    INNER  JOIN M_Borrowers C ON A.BorrowerID=c.BorrowerID
+                                    INNER  JOIN M_Borrowers C ON A.BorrowerID=C.BorrowerID
                                     LEFT   JOIN T_ReturnBook D ON A.BorrowingID = D.BorrowingID
                                     WHERE  A.IsActive  = 'Y'
                                            AND A.Status ='5'
+                                           AND A.BorrowingID NOT IN (SELECT BorrowingID FROM T_ReturnBook WHERE IsActive = 'Y')
                                            AND (C.CustomerName LIKE '%".$varbl."%' OR A.BorrowingID LIKE '%".$varbl."%')
                               ");
          if ($query->num_rows() > 0) {

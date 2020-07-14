@@ -62,7 +62,9 @@
                 <tr>
                   <td nowrap> 
                       <a href="#" class="btn btn-warning" onclick="return getBorrowers('<?php echo $value->BorrowerID?>');" title="Edit"><i class="fas fa-edit"></i> </a> 
-                      <a href="#" class="btn btn-danger" onclick="return DeleteData('<?php echo $value->BorrowerID?>', 'borrowers/viewBorrowers', 'delete', 'a-borrowers', 'li-master');" title="Delete"><i class="fas fa-trash">
+                      <a href="#" class="btn btn-danger" onclick="return DeleteData('<?php echo $value->BorrowerID?>', 'borrowers/viewBorrowers', 'delete', 'a-borrowers', 'li-master');" title="Delete"><i class="fas fa-trash"></i></a>
+                      <a href="#" 
+                      onclick="return printCardBorrower('/ci-library/borrowers/viewBorrowers/print-borrowers/<?php echo $value->BorrowerID; ?>');" title="Print Card Borrowers" class="btn btn-success"><i class="fas fa-print"></i> </a>  
                   </td>
                   <td><?php echo $value->BorrowerID;?></td>
                   <td><?php echo $value->CustomerName;?></td>

@@ -116,7 +116,7 @@ class Book extends CI_Controller {
       $heavy      = $_POST["heavy"];
       $lost       = $_POST["lost"];
       $late       = $_POST["late"];
-      $sts        = "5";
+      $sts        = (trim($_POST["stock"]) >  0) ? "5" : "7";
 
       if ($status != "error") {
         $config['upload_path']   = './upload/book/';
@@ -226,6 +226,7 @@ class Book extends CI_Controller {
     else if (trim($uri) == "delete") {
         $this->db->query("UPDATE  M_Book 
                           SET     IsActive        = 'N',
+                                  Status          = '9',
                                   LastUpdateDate  = '".$datetm."',
                                   LastUpdateBy    = '".$usernm."' 
                           WHERE   BookID          = '".$uri1."'

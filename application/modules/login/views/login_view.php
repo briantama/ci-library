@@ -2,24 +2,36 @@
 <?php
 
   $img   = "default.jpeg";
+  $imglg = "default.jpeg";
   $stptl = "Apps Library Bryn";
-  $query = $this->db->query(" SELECT SetupImage, SetupName
+  $query = $this->db->query(" SELECT SetupImage, SetupImageLogo, SetupName
                               FROM   M_Setupprofile
                             ");
     if ($query->num_rows() > 0) {
       $arr   = $query->row();
       $img   = (trim($arr->SetupImage) != "") ? $arr->SetupImage : "default.jpeg";
+      $imglg = (trim($arr->SetupImageLogo) != "") ? $arr->SetupImageLogo : "default.jpeg";
   }
 
-  $stptl = $arr->SetupName;
-  $image = "./upload/profile/".$img;
+  $stptl   = $arr->SetupName;
+  $image   = "./upload/profile/".$img;
+  $imagelg = "./upload/profile/".$img;
 
-  if(file_exists($image)){
+    if(file_exists($image)){
       $image = base_url()."upload/profile/".$img;
     }
     else{
       $image = base_url()."upload/profile/default.jpeg";
     }
+
+
+    if(file_exists($imagelg)){
+      $imagelg = base_url()."upload/logo/".$imglg;
+    }
+    else{
+      $imagelg = base_url()."upload/logo/default.jpeg";
+    }
+
 
 ?>
 
@@ -36,6 +48,7 @@
   <meta name="author" content="">
 
   <title><?= $title; ?></title>
+  <link rel="shortcut icon" href="<?php echo $imagelg; ?>">
 
   <!-- Custom fonts for this template-->
   <link href="<?= base_url(); ?>admin-sb2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -92,9 +105,11 @@
                       <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                     </a> -->
                   </form>
-                  <hr>
                   <div class="text-center">
                     <a class="small" href="#">Forgot Password?</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="#"><font color="black">Copyright &copy; Bryn Apps 2017 - <?php echo date('Y'); ?></font></a>
                   </div>
                 </div>
               </div>
